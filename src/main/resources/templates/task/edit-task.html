@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="el : ${task}" th:insert="fragments/header :: defaultheader"></div>
+<form  th:action="'/task/edit/'+ *{id}" th:object="${task}" method="post">
+    <p>Название:
+        <input type="text" id="nametask" th:value="*{nametask}" name="nametask" placeholder="Название" >
+    <div th:if="${#fields.hasErrors('nametask')}" th:errors="*{nametask}"></div>
+    </p>
+    <p>Дата:
+        <input type="text" id="date" name="date" th:value="*{date}" placeholder="Текст" >
+    <div th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></div>
+    </p>
+    <p>дата сдачи:
+        <input type="text" id="datesdacha" name="datesdacha" th:value="*{datesdacha}" placeholder="Автор" >
+    <div th:if="${#fields.hasErrors('datesdacha')}" th:errors="*{datesdacha}"></div>
+    </p>
+    <p>Тип задания:
+        <select  name="type_tasks">
+    <div th:each="element : ${type_tasks}">
+                <option th:text="${element.nametype}"></option>
+            </div>
+        </select>
+    </p>
+    <p>Найстроки задания:
+        <select  name="background">
+    <div th:each="element : ${setting_tasks}">
+                <option th:text="${element.background}"></option>
+            </div>
+        </select>
+        <select  name="color">
+            <div th:each="element : ${setting_tasks}">
+                <option th:text="${element.color}"></option>
+            </div>
+        </select>
+    <input type="submit" value="Изменить" class="btn btn-success">
+</form>
+
+</body>
+</html>

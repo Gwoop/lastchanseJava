@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+<div th:each="el : ${courses}">
+    <h2 th:text="${el.seria}"></h2>
+    <h2 th:text="${el.number}"></h2>
+    <h2 th:text="${el.date}"></h2>
+    <a th:href="'/passport/edit/'+ ${el.id}">изменить</a>
+    <a th:href="'/passport/del/'+ ${el.id}" class="btn btn-primary">Удалить</a>
+</div>
+</body>
+</html>

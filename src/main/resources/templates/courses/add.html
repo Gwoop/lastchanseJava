@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div  th:insert="fragments/header :: defaultheader"></div>
+<form th:object="${courses}" action="/courses/add" method="post">
+  <p>Название:
+    <input type="text" id="namecourse" th:value="*{namecourse}" name="namecourse" placeholder="Название" >
+  <div th:if="${#fields.hasErrors('namecourse')}" th:errors="*{namecourse}"></div>
+  </p>
+  <input type="submit" value="Создать курс" class="btn btn-success">
+</form>
+</body>
+</html>

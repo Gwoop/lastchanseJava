@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Главная</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+
+<div th:each="el : ${task}">
+    <h2 th:text="${el.nametask}"></h2>
+    <h3 th:text="${el.date}"></h3>
+    <h4 th:text="${el.datesdacha}"></h4>
+    <a th:href="'/task/'+ ${el.id}">Подробнее</a>
+</div>
+
+<a href="/task/add" class="btn btn-primary">Создать Задание</a>
+
+
+
+</body>
+</html>

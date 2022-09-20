@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <title>users</title>
+</head>
+<body>
+<div th:each="el:${user}">
+  <p th:text="${el.username}"></p>
+  <p th:text="${el.password}"></p>
+  <p th:text="${el.active}"></p>
+  <p th:text="${el.roles}"></p>
+  <a th:href="'/admon/edit/' + ${el.id}"> Редактировать</a>
+</div>
+
+<form action="/admin" method="post">
+  <div th:each="el:${one_user}">
+    <input type="hidden" th:value="${el.id}" name="userid">
+    <input type="text" th:value="${el.username}" name="username">
+    <p th:text="${el.username}"></p>
+  </div>
+
+  <div th:each="role:${roles}">
+    <div th:each="user:${one_user}">
+      <input id="{role}"
+             type="checkbox"
+             th:name="${'roles[]'}"
+             th:value="${role}"
+             th:checked="${#lists.contains(user.roles, role)}">
+      <label th:text="${role}"></label>
+    </div>
+  </div>
+  <input type="submit" value="Изменить роли">
+</form>
+
+</body>
+</html>

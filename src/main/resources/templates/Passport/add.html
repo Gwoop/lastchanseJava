@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div  th:insert="fragments/header :: defaultheader"></div>
+<form th:object="${courses}" action="/passport/add" method="post">
+  <p>Имф:
+    <input type="text" id="seria" th:value="*{seria}" name="seria" placeholder="Название" >
+  <div th:if="${#fields.hasErrors('seria')}" th:errors="*{seria}"></div>
+  </p>
+    <p>Фамилия:
+        <input type="text" id="number" th:value="*{number}" name="number" placeholder="Название" >
+    <div th:if="${#fields.hasErrors('number')}" th:errors="*{number}"></div>
+    </p>
+    <p>Отчество:
+        <input type="text" id="date" th:value="*{date}" name="date" placeholder="Название" >
+    <div th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></div>
+    </p>
+  <input type="submit" value="Создать" class="btn btn-success">
+</form>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+<div th:each="el : ${task}">
+    <h2 th:text="${el.nametask}"></h2>
+    <h3 th:text="${el.date}"></h3>
+    <h4 th:text="${el.datesdacha}"></h4>
+    <h5 th:text="${el.type_task.id}"></h5>
+    <h5 th:text="${el.setting_task.id}"></h5>
+    <a th:href="'/task/edit/'+ ${el.id}">изменить задание</a>
+    <a th:href="'/task/del/'+ ${el.id}" class="btn btn-primary">Удалить</a>
+</div>
+
+
+
+<div th:each="el : ${ochenkas}">
+    <a>Оценка: </a>
+    <h2 th:text="${el.ochenka}"></h2>
+    <a th:href="'/news/edit/'+ ${el.id}">изменить оценки</a>
+</div>
+</body>
+</html>
